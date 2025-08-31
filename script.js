@@ -38,39 +38,57 @@ function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(new Book(title, author, pages, isRead));
 }
 
-const clearContent = function () {
+const clearBooks = function () {
     while (contentContainer.lastElementChild) {
         contentContainer.removeChild(contentContainer.lastElementChild);
     }
 };
 
+const getCardByBook = function (book) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    // Add p
+    const p = document.createElement('p');
+    p.innerHTML = `Title: ${book.title}<br>Author: ${book.author}<br>Pages: ${book.pages}<br>`;
+    card.appendChild(p);
+
+    // Add buttons
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('btn-container');
+
+    const toggleReadBtn = document.createElement('button');
+    toggleReadBtn.classList.add(book.isRead? 'read' : 'unread');
+    toggleReadBtn.type = 'button';
+    toggleReadBtn.textContent = book.isRead ? 'Read' : 'Not read';
+    btnContainer.appendChild(toggleReadBtn);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('.delete');
+    deleteBtn.type = 'button';
+    deleteBtn.textContent = 'Delete';
+    btnContainer.appendChild(deleteBtn);
+
+    card.appendChild(btnContainer);
+    return card;
+};
+
 const displayBooks = function () {
-    clearContent();
-    
-    myLibrary.forEach(book => {
-        const card = document.createElement('div');
-        
-        for (const prop in book) {
-            if (prop === 'id') continue;
+    clearBooks();
 
-            if (prop === 'isRead') {
-                
-            }
-
-            const p = document.createElement('p');
-            p.textContent = book[prop];
-            card.appendChild(p);
-        }
-
-        contentContainer.appendChild(card);
-    });
+    myLibrary
+        .map(getCardByBook)
+        .forEach(card => contentContainer.appendChild(card));
 };
 
 // Events
+
+// Open modal
 document.querySelector('#add').addEventListener('click', () => {
     document.querySelector('#addBookModal').showModal();
 });
 
+// Submit new book's info through modal's form
 const modalForm = modal.querySelector('form');
 modalForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -80,15 +98,17 @@ modalForm.addEventListener('submit', e => {
     const pages = parseInt(modal.querySelector('#pages').value);
     const isRead = modal.querySelector('#read').checked;
 
-    myLibrary.push(new Book(title, author, pages, isRead));
+    addBookToLibrary(title, author, pages, isRead);
     modal.close();
     displayBooks();
 });
 
+// Close modal
 modal.querySelector('#cancel').addEventListener('click', () => {
     modal.close();
 });
 
+// Clear inputs of modal
 modal.addEventListener('close', () => modalForm.reset());
 
 
