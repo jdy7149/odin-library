@@ -30,3 +30,24 @@ function Book(title, author, pages, isRead) {
 function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(new Book(title, author, pages, isRead));
 }
+
+const contentContainer = document.querySelector('.content');
+
+const displayBooks = function () {
+    myLibrary.forEach(book => {
+        const card = document.createElement('div');
+        
+        for (const prop in book) {
+            if (prop === 'id') continue;
+
+            if (prop === 'isRead') {
+
+            }
+
+            const p = document.createElement('p');
+            p.textContent = book[prop];
+        }
+
+        contentContainer.appendChild(card);
+    });
+};

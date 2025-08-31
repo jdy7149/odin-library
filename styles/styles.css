@@ -15,9 +15,15 @@ html {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 64px;
+}
+
+.header > p {
     font-size: 3rem;
     font-weight: 700;
-    margin: auto;
 }
 
 .content {
