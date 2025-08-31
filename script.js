@@ -53,7 +53,9 @@ const displayBooks = function () {
     });
 };
 
-document.querySelector('.add').addEventListener('onclick', );
+document.querySelector('#add').addEventListener('click', () => {
+    document.querySelector('#addBookModal').showModal();
+});
 
 
 displayBooks();

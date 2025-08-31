@@ -3,12 +3,6 @@
     --content-bg-clr: #f5f7fa;
 }
 
-html {
-  font-family: "Italianno", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -22,6 +16,7 @@ html {
 }
 
 .header > p {
+    font-family: "Italianno", cursive;
     font-size: 3rem;
     font-weight: 700;
 }
