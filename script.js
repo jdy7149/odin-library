@@ -41,13 +41,19 @@ const displayBooks = function () {
             if (prop === 'id') continue;
 
             if (prop === 'isRead') {
-
+                
             }
 
             const p = document.createElement('p');
             p.textContent = book[prop];
+            card.appendChild(p);
         }
 
         contentContainer.appendChild(card);
     });
 };
+
+document.querySelector('.add').addEventListener('onclick', );
+
+
+displayBooks();
