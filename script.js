@@ -81,6 +81,13 @@ const displayBooks = function () {
         .forEach(card => contentContainer.appendChild(card));
 };
 
+const deleteBook = function (bookId) {
+    const idx = myLibrary.findIndex(book => book.id === bookId);
+    if (idx !== 1){
+        myLibrary.splice(idx, 1);
+    }
+};
+
 // Events
 
 // Open modal
