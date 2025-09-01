@@ -69,7 +69,7 @@ const getCardByBook = function (book) {
     btnContainer.appendChild(toggleReadBtn);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('.delete');
+    deleteBtn.classList.add('delete');
     deleteBtn.type = 'button';
     deleteBtn.textContent = 'Delete';
     btnContainer.appendChild(deleteBtn);
@@ -123,9 +123,15 @@ modal.querySelector('#cancel').addEventListener('click', () => {
 // Clear inputs of modal
 modal.addEventListener('close', () => modalForm.reset());
 
-// Delete Book
-document.querySelector('.delete').addEventListener('click', ())
-
-
-
 displayBooks();
+
+// Delete Book
+document.querySelector('.delete').addEventListener('click', evt => {
+    const selectedId = evt.target.parentElement.dataset.id;
+    console.log(selectedId);
+    deleteBook(selectedId);
+    displayBooks();
+});
+
+
+
