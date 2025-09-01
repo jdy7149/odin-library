@@ -4,6 +4,11 @@
     --button-blue: hsl(201, 79%, 46%);
     --button-blue-hover: hsl(201, 79%, 36%);
     --font-white: white;
+    --input-border-clr: #E5E7EB;
+    --button-green: hsl(152, 55%, 45%);
+    --button-green-hover: hsl(152, 55%, 38%);
+    --button-red: hsl(4, 84%, 60%);
+    --button-red-hover: hsl(4, 84%, 50%);
 }
 
 .container {
@@ -12,6 +17,7 @@
     min-height: 100vh;
 }
 
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -37,6 +43,7 @@
     background-color: var(--button-blue-hover);
 }
 
+/* Content */
 .content {
     flex: 1;
     display: grid;
@@ -48,6 +55,7 @@
     gap: 24px;
 }
 
+/* Card */
 .card {
     display: flex;
     flex-direction: column;
@@ -78,29 +86,65 @@
 
 .card .btn-container {
     display: flex;
-    justify-content: end;
     gap: 16px;
 }
 
-.btn-container button {
+.btn-container button, #modalForm button {
     border-radius: 16px;
     padding: 8px 16px;
     color: var(--font-white);
     border: none;
 }
 
-.toggle-read {
-    background-color: hsl(152, 55%, 45%);
+.toggle-read, #confirm {
+    background-color: var(--button-green);
 }
 
-.toggle-read:hover {
-    background-color: hsl(152, 55%, 38%);
+.toggle-read:hover, #confirm:hover {
+    background-color: var(--button-green-hover);
 }
 
-.delete {
-    background-color: hsl(4, 84%, 60%);
+.delete, #cancel {
+    background-color: var(--button-red);
 }
 
-.delete:hover {
-    background-color: hsl(4, 84%, 50%);
+.delete:hover, #cancel:hover {
+    background-color: var(--button-red-hover);
+}
+
+/* Modal */
+#addBookModal {
+    border: none;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+#modalForm {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 16px;
+    align-items: center;
+}
+
+#modalForm input {
+    border: 1px solid var(--input-border-clr);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+#modalForm > div {
+    grid-column: 1 / 3;
+}
+
+#modalForm > div:first-of-type {
+    justify-self: center;
+    display: flex;
+    gap: 8px;
+}
+
+#modalForm > div:last-of-type {
+    justify-self: end;
+    display: flex;
+    gap: 16px;
 }
