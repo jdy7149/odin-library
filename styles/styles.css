@@ -1,6 +1,9 @@
 :root {
     --card-bg-clr: white;
     --content-bg-clr: #f5f7fa;
+    --button-blue: hsl(201, 79%, 46%);
+    --button-blue-hover: hsl(201, 79%, 36%);
+    --font-white: white;
 }
 
 .container {
@@ -18,8 +21,20 @@
 
 .header > p {
     font-family: "Italianno", cursive;
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 800;
+}
+
+.header > button {
+    padding: 16px 48px;
+    background-color: var(--button-blue);
+    color: var(--font-white);
+    border: none;
+    border-radius: 16px;
+}
+
+.header > button:hover {
+    background-color: var(--button-blue-hover);
 }
 
 .content {
@@ -34,13 +49,58 @@
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     padding: 16px;
     border-radius: 24px;
     background-color: var(--card-bg-clr);
+}
+
+.title, .author, .pages {
+    font-family: "Italianno", "Roboto", system-ui;
+}
+
+.title {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.author {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.pages {
+    font-size: 1.5rem;
 }
 
 .card .btn-container {
     display: flex;
     justify-content: end;
     gap: 16px;
+}
+
+.btn-container button {
+    border-radius: 16px;
+    padding: 8px 16px;
+    color: var(--font-white);
+    border: none;
+}
+
+.toggle-read {
+    background-color: hsl(152, 55%, 45%);
+}
+
+.toggle-read:hover {
+    background-color: hsl(152, 55%, 38%);
+}
+
+.delete {
+    background-color: hsl(4, 84%, 60%);
+}
+
+.delete:hover {
+    background-color: hsl(4, 84%, 50%);
 }

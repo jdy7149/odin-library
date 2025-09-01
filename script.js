@@ -53,9 +53,20 @@ const getCardByBook = function (book) {
     card.classList.add('card');
 
     // Add p
-    const p = document.createElement('p');
-    p.innerHTML = `Title: ${book.title}<br>Author: ${book.author}<br>Pages: ${book.pages}<br>`;
-    card.appendChild(p);
+    const pTitle = document.createElement('p');
+    pTitle.classList.add('title');
+    pTitle.textContent = book.title;
+    card.appendChild(pTitle);
+
+    const pAuthor = document.createElement('p');
+    pAuthor.classList.add('author');
+    pAuthor.textContent = `by ${book.author}`;
+    card.appendChild(pAuthor);
+
+    const pPages = document.createElement('p');
+    pPages.classList.add('pages');
+    pPages.textContent = `${book.pages} pages`;
+    card.appendChild(pPages);
 
     // Add buttons
     const btnContainer = document.createElement('div');
@@ -65,7 +76,7 @@ const getCardByBook = function (book) {
     const toggleReadBtn = document.createElement('button');
     toggleReadBtn.classList.add('toggle-read');
     toggleReadBtn.type = 'button';
-    toggleReadBtn.textContent = book.isRead ? 'Read' : 'Not read';
+    toggleReadBtn.textContent = book.isRead ? 'Read' : 'Mark as unread';
     btnContainer.appendChild(toggleReadBtn);
 
     const deleteBtn = document.createElement('button');
