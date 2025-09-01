@@ -76,7 +76,7 @@ const getCardByBook = function (book) {
     const toggleReadBtn = document.createElement('button');
     toggleReadBtn.classList.add('toggle-read');
     toggleReadBtn.type = 'button';
-    toggleReadBtn.textContent = book.isRead ? 'Read' : 'Mark as unread';
+    toggleReadBtn.textContent = book.isRead ? 'Mark as unread' : 'Read this book';
     btnContainer.appendChild(toggleReadBtn);
 
     const deleteBtn = document.createElement('button');
