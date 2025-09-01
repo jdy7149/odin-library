@@ -60,6 +60,7 @@ const getCardByBook = function (book) {
     // Add buttons
     const btnContainer = document.createElement('div');
     btnContainer.classList.add('btn-container');
+    btnContainer.dataset.id = book.id;
 
     const toggleReadBtn = document.createElement('button');
     toggleReadBtn.classList.add(book.isRead? 'read' : 'unread');
@@ -122,6 +123,8 @@ modal.querySelector('#cancel').addEventListener('click', () => {
 // Clear inputs of modal
 modal.addEventListener('close', () => modalForm.reset());
 
+// Delete Book
+document.querySelector('.delete').addEventListener('click', ())
 
 
 
