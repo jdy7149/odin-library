@@ -9,6 +9,10 @@
     --button-green-hover: hsl(152, 55%, 38%);
     --button-red: hsl(4, 84%, 60%);
     --button-red-hover: hsl(4, 84%, 50%);
+    --unread-clr: hsl(185, 62%, 45%);
+    --unread-hover-clr: hsl(185, 62%, 38%);
+    --read-clr: hsl(43, 89%, 55%);
+    --read-hover-clr: hsl(43, 89%, 48%);
 }
 
 .container {
@@ -96,12 +100,20 @@
     border: none;
 }
 
-.toggle-read, #confirm {
-    background-color: var(--button-green);
+.read {
+    background-color: var(--read-clr);
 }
 
-.toggle-read:hover, #confirm:hover {
-    background-color: var(--button-green-hover);
+.read:hover {
+    background-color: var(--read-hover-clr);
+}
+
+.unread {
+    background-color: var(--unread-clr);
+}
+
+.unread:hover {
+    background-color: var(--unread-hover-clr);
 }
 
 .delete, #cancel {
@@ -147,4 +159,12 @@
     justify-self: end;
     display: flex;
     gap: 16px;
+}
+
+#confirm {
+    background-color: var(--button-green);
+}
+
+#confirm:hover {
+    background-color: var(--button-green-hover);
 }
