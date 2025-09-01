@@ -87,7 +87,7 @@ const displayBooks = function () {
 
 const deleteBook = function (bookId) {
     const idx = myLibrary.findIndex(book => book.id === bookId);
-    if (idx !== 1){
+    if (idx !== -1){
         myLibrary.splice(idx, 1);
     }
 };
