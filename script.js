@@ -29,6 +29,10 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead;
 }
 
+Book.prototype.toggleRead = function () {
+    this.isRead = this.isRead ? false : true;
+}
+
 // Components
 const contentContainer = document.querySelector('.content');
 const modal = document.querySelector('#addBookModal');
