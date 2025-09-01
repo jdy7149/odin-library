@@ -63,7 +63,7 @@ const getCardByBook = function (book) {
     btnContainer.dataset.id = book.id;
 
     const toggleReadBtn = document.createElement('button');
-    toggleReadBtn.classList.add(book.isRead? 'read' : 'unread');
+    toggleReadBtn.classList.add('toggle-read');
     toggleReadBtn.type = 'button';
     toggleReadBtn.textContent = book.isRead ? 'Read' : 'Not read';
     btnContainer.appendChild(toggleReadBtn);
@@ -89,6 +89,14 @@ const displayBooks = function () {
     document.querySelectorAll('.delete')?.forEach(btn => btn.addEventListener('click', evt => {
         const selectedId = evt.target.parentElement.dataset.id;
         deleteBook(selectedId);
+        displayBooks();
+    }));
+
+    // Add event to toggle read buttons
+    document.querySelectorAll('.toggle-read').forEach(btn => btn.addEventListener('click', evt => {
+        const selectedId = evt.target.parentElement.dataset.id;
+        const selectedBook = myLibrary.find(book => book.id === selectedId);
+        selectedBook.toggleRead();
         displayBooks();
     }));
 };
@@ -131,9 +139,3 @@ modal.querySelector('#cancel').addEventListener('click', () => {
 modal.addEventListener('close', () => modalForm.reset());
 
 displayBooks();
-
-// Delete Book
-
-
-
-
