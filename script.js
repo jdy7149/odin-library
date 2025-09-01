@@ -84,6 +84,13 @@ const displayBooks = function () {
     myLibrary
         .map(getCardByBook)
         .forEach(card => contentContainer.appendChild(card));
+
+    // Add event to delete buttons
+    document.querySelectorAll('.delete')?.forEach(btn => btn.addEventListener('click', evt => {
+        const selectedId = evt.target.parentElement.dataset.id;
+        deleteBook(selectedId);
+        displayBooks();
+    }));
 };
 
 const deleteBook = function (bookId) {
@@ -126,12 +133,7 @@ modal.addEventListener('close', () => modalForm.reset());
 displayBooks();
 
 // Delete Book
-document.querySelector('.delete').addEventListener('click', evt => {
-    const selectedId = evt.target.parentElement.dataset.id;
-    console.log(selectedId);
-    deleteBook(selectedId);
-    displayBooks();
-});
+
 
 
 
