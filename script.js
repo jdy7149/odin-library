@@ -1,3 +1,18 @@
+class Book {
+    id = crypto.randomUUID();
+
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+
+    toggleRead() {
+        this.isRead = !this.isRead;
+    }
+}
+
 // Initial elements
 const myLibrary = [
     new Book('To Kill a Mockingbird',
@@ -16,22 +31,6 @@ const myLibrary = [
         true
     )
 ];
-
-// Book's constructor
-function Book(title, author, pages, isRead) {
-    if (!new.target) 
-        throw Error("Need to use 'new' operator to call the constructor");
-    
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
-
-Book.prototype.toggleRead = function () {
-    this.isRead = !this.isRead;
-}
 
 // Components
 const contentContainer = document.querySelector('.content');
