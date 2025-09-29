@@ -127,15 +127,26 @@ document.querySelector('#add').addEventListener('click', () => {
 
 // Submit new book's info through modal's form
 const modalForm = modal.querySelector('form');
+
 modalForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    const title = modal.querySelector('#title').value;
-    const author = modal.querySelector('#author').value;
-    const pages = parseInt(modal.querySelector('#pages').value);
-    const isRead = modal.querySelector('#read').checked;
+    const title = modalForm.querySelector('#title');
+    const author = modalForm.querySelector('#author');
+    const pages = modalForm.querySelector('#pages');
+    const isRead = modalForm.querySelector('#read');
 
-    addBookToLibrary(title, author, pages, isRead);
+    for (const [fieldName, inputElement] of Object.entries({ title, author, pages })) {
+        inputElement.setCustomValidity('');
+
+        if (!inputElement.checkValidity()) {
+            inputElement.setCustomValidity(`The ${fieldName} must be filled!`);
+            inputElement.reportValidity();
+            return;
+        }
+    }
+
+    addBookToLibrary(title.value, author.value, Number(pages.value), isRead.checked);
     modal.close();
     displayBooks();
 });
